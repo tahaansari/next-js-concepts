@@ -19,7 +19,7 @@ const page = async () => {
         {posts.map((item)=>{
             return <div className={style.item} key={item.id}>
                 {item.title}
-                <Link href={`/blog/${item.id}`} style={{color:"white"}}><button>View Blog</button></Link>
+                <Link href={`/blogs/${item.id}`} style={{color:"white"}}><button>View Blog</button></Link>
             </div>
         })}
     </>
