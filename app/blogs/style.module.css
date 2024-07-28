@@ -1,5 +1,8 @@
 .item{
     margin-bottom: 20px;
-    background-color: blue;
-    color: white;
+    background-color: aliceblue;
+    padding: 20px;
+}
+.item a{
+    display: block;
 }
