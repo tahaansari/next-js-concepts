@@ -6,7 +6,10 @@ import Link from "next/link";
 
 export async function fetchPosts() {
   const posts = await fetch("https://jsonplaceholder.typicode.com/posts?_limit=10");
-  const data = posts.json();
+  // console.log(posts);
+  const data = await posts.json();
+  console.log(data);
+  // const actualData = (data) => data.data;
   return data;
 }
 
