@@ -1,31 +1,23 @@
 import React from "react";
-import style from "./style.module.css";
+import AddBlog from "@/app/components/AddBlog";
+import Posts from "@/app/components/Posts";
 
-// import Button from '../components/Button';
-import Link from "next/link";
-
-export async function fetchPosts() {
-  const posts = await fetch("https://jsonplaceholder.typicode.com/posts?_limit=10");
-  const data = await posts.json();
-  return data;
-}
+// export const dynamic = "force-dynamic";
 
 const page = async () => {
-  const posts = await fetchPosts();
+  console.log("page got called");
+
+  const randomNumber = Math.floor(Math.random() * 10) + 1;
+
+  // console.log(`random number is ${randomNumber}`);
+
+  const fetchData = await fetch(`https://jsonplaceholder.typicode.com/posts?_limit= ${randomNumber}`);
+  const data = await fetchData.json();
 
   return (
     <>
-      {posts.map((item) => {
-        return (
-          <div className={style.item} key={item.id}>
-            <div>Id: {item.id}</div>
-            <div>Title: {item.title}</div>
-            <Link href={`/blogs/${item.id}`} style={{ color: "white" }}>
-              <button>View Blog</button>
-            </Link>
-          </div>
-        );
-      })}
+      <AddBlog />
+      <Posts data={data}></Posts>
     </>
   );
 };
